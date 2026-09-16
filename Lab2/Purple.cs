@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics.X86;
 
 namespace Lab2
 {
@@ -12,7 +13,10 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            for (int i=1; i <= n; i++)
+            {
+                answer += (p+(n-1)*h)*2;
+            }
             // end
 
             return answer;
@@ -23,7 +27,12 @@ namespace Lab2
             int remainder = 0;
 
             // code here
-
+            while (b <= a)
+            {
+                ++quotient;
+                a -= b;
+            }
+            remainder = a;
             // end
 
             return (quotient, remainder);
@@ -51,19 +60,32 @@ namespace Lab2
         public int Task5(int a, int b)
         {
             int answer = 0;
-
+            long number = a;
             // code here
+            while (b>0)
+            {
+                number *= b;
+                b--;
+            }
+            while (number>=10)
+            {
+                number /= 10;
+                answer++;
+            }
+                // end
 
-            // end
-
-            return answer;
+                return answer;
         }
         public long Task6()
         {
             long answer = 0;
 
             // code here
-
+            for (int i=1; i <= 64; i++)
+            {
+                answer += (long)Math.Pow(2, i);
+            }
+            answer /= 15*1000;
             // end
 
             return answer;
