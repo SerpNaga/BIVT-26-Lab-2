@@ -51,8 +51,8 @@ namespace Lab2
             int a2 = 3;
             int b1 = 1; 
             int b2 = 2;
-            double s = 1 / 10000;
-            while ((a1 / (double)b1 - a2 / (double)b2) >= s){
+            double s = 1 / (double)10000;
+            while (Math.Abs(a1 / (double)b1 - a2 / (double)b2) > s){
                 int c1 = a2;
                 int c2 = b2;
                 a2 += a1;
@@ -61,8 +61,6 @@ namespace Lab2
                 b1 = c2;
                 answer = c1 / (double)c2;
             }
-            Console .WriteLine(a1);
-            Console .WriteLine(b1);
             // end
 
             return answer;
@@ -72,7 +70,12 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            double s = 1 / (double)10000;
+            while (Math.Abs(b) >= s){
+                answer++;
+                b *= q;
+            }
+            answer++;
             // end
 
             return answer;
