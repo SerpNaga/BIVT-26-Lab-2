@@ -140,7 +140,25 @@ namespace Lab2
             double SY = 0;
 
             // code here
-
+            double es = 0.0001;
+            double y;
+            for(double x=a; x<=b; x += h)
+            {
+                double pwr = 1;
+                double s = 1;
+                if (a % 2 == 0)
+                {
+                    s *= -1;
+                }
+                do {
+                    pwr *= x;
+                    s *= -(x*x);
+                    SS += s;
+                    y=Math.Cos(s);
+                    SY += y;
+                }
+                while (Math.Abs(s) >= es);
+            }
             // end
 
             return (SS, SY);
