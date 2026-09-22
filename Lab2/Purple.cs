@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 
@@ -13,9 +14,13 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            int midpoint;
             for (int i=1; i <= n; i++)
             {
-                answer += (p+(n-1)*h)*2;
+                //Console.WriteLine(i);
+                midpoint = (p+(i-1)*h);
+                midpoint *= midpoint;
+                answer += midpoint;
             }
             // end
 
@@ -42,7 +47,22 @@ namespace Lab2
             double answer = 0;
 
             // code here
-
+            int a1 = 2;
+            int a2 = 3;
+            int b1 = 1; 
+            int b2 = 2;
+            double s = 1 / 10000;
+            while ((a1 / (double)b1 - a2 / (double)b2) >= s){
+                int c1 = a2;
+                int c2 = b2;
+                a2 += a1;
+                b2 += b1;
+                a1 = c1;
+                b1 = c2;
+                answer = c1 / (double)c2;
+            }
+            Console .WriteLine(a1);
+            Console .WriteLine(b1);
             // end
 
             return answer;
@@ -81,11 +101,13 @@ namespace Lab2
             long answer = 0;
 
             // code here
-            for (int i=1; i <= 64; i++)
+            long pwr = 1;
+            for (int i=1; i < 64; i++)
             {
-                answer += (long)Math.Pow(2, i);
+                answer += pwr;
+                pwr *= 2;
             }
-            answer /= 15*1000;
+            answer /= 15*500000;
             // end
 
             return answer;
@@ -96,8 +118,16 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
-            // end
+            double sum=S;
+            double monthly = 0;
+            while (sum < (S * 2)) {
+                if (answer % 12 == 0)
+                {
+                    monthly = sum * d/100 /12;
+                }
+                answer++;
+                sum += monthly;
+            } 
 
             return answer;
         }
